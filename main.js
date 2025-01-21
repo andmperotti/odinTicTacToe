@@ -1,21 +1,15 @@
-// createPlayer factory function  creates an object that represents each player playing the game , these will have properties like 'wins', 'losses', 'ties', and  'marker' which will be the icon that represents each player ('X' or 'O'), later I'd like to be able to allow users to upload an image they can use as their marker.
+// createPlayer factory function  creates an object that represents each player playing the game , for now these will just have a name and marker.
+//These players are primarily used in the gameboard so I'll move them there.
 const players = (()=>{
-    function createPlayer(name, marker="X"){
+    function createPlayer(name, marker){
         this.name = name
-        this.wins = 0
-        this.losses = 0
-        this.ties = 0
-        this.getWins =()=>this.wins
-        this.incrementWins = ()=>this.wins++
-        this.getLosses = ()=>this.losses
-        this.incrementLosses = ()=>this.losses++
-        this.getTies =()=>this.ties
-        this.incrementTies = ()=>this.ties++
         this.marker=marker
-        return {name, marker, getWins, getLosses, getTies, incrementWins, incrementTies, incrementLosses}
+        this.getName=()=>this.name
+        this.getMarker=()=>this.marker
+        return {getName, getMarker}
     }
     
-    this.playerOne = createPlayer('one')
+    this.playerOne = createPlayer('one', 'X')
     this.playerTwo = createPlayer('two', 'O')
     return {playerOne, playerTwo}
 })()

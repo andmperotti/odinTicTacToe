@@ -7,9 +7,9 @@ let GameBoard = (function(){
 })()
 
 function Cell(){
-    let value = '';
+    let value = '_';
     const getValue = ()=>value
-    const setValue = (player)=>value=player
+    const setValue = (player)=>value=player.marker
 
     return {getValue, setValue}
 }
@@ -23,7 +23,7 @@ function Cell(){
         //check for a winner each turn, by parsing over cells and looking for specific combinations of cell values
         //If there is a winner stop the playing and declare a winner, in html you can add a class to highlight the cells of the winning placements. Otherwise keep playing the game
 let PlayGame = function(){
-    let board= GameBoard
+    let board= GameBoard.board
     const players = [{
         name: 'player 1', 
         marker: 'X'
@@ -34,8 +34,11 @@ let PlayGame = function(){
     let moves = 0
     let nextPlayerMove = players[0]
     function printBoard(board){
-        
+        console.log(`${board[0].getValue()} ${board[1].getValue()} ${board[2].getValue()}`)
+        console.log(`${board[3].getValue()} ${board[4].getValue()} ${board[5].getValue()}`)
+        console.log(`${board[6].getValue()} ${board[7].getValue()} ${board[8].getValue()}`)
     }
+    printBoard(board)
     // function askPlayerMove(place){
     //     if(board[place].value!==''){
 

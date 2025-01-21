@@ -1,7 +1,24 @@
 //GameBoard object, only one is needed so iife it
     //board array, stores cells of playing board
         //Cells should be instances of an object that has a value and maybe methods to change and access that value (value, getValue, setValue)
+let GameBoard = (function(){
+    const board = [];
+    for(let i = 0; i<3; i++){
+        let tempRow = Array()
+        for(let j = 0; j<3; j++){
+            tempRow.push(Cell())
+        }
+        board.push(tempRow)
+    }
+})()
 
+function Cell(){
+    let value = '';
+    const getValue = ()=>value
+    const setValue = (player)=>value=player
+
+    return {getValue, setValue}
+}
 //PlayGame will be an object, but inside an iife because we only want one game to be playing
     //an instance of the GameBoard is imported and used
     //players object holds the players and their name and marker

@@ -18,3 +18,8 @@
 // I think I'll use an iife for each player, and an iife for the game, which will pull in each player, and initiate playing of the game
 
 
+
+
+
+
+//i think put everything outside of an iife until you're ready for it to be in an iife that way you can test functions like the isThereAWinner or whatever it's going to be called, so you can test it by passing in an array of a probable game state

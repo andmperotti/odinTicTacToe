@@ -2,14 +2,8 @@
     //board array, stores cells of playing board
         //Cells should be instances of an object that has a value and maybe methods to change and access that value (value, getValue, setValue)
 let GameBoard = (function(){
-    const board = [];
-    for(let i = 0; i<3; i++){
-        let tempRow = Array()
-        for(let j = 0; j<3; j++){
-            tempRow.push(Cell())
-        }
-        board.push(tempRow)
-    }
+    const board = new Array(9).fill(Cell())
+    return {board}
 })()
 
 function Cell(){
@@ -29,7 +23,7 @@ function Cell(){
         //check for a winner each turn, by parsing over cells and looking for specific combinations of cell values
         //If there is a winner stop the playing and declare a winner, in html you can add a class to highlight the cells of the winning placements. Otherwise keep playing the game
 let PlayGame = function(){
-    let game = GameBoard
+    let board= GameBoard
     const players = [{
         name: 'player 1', 
         marker: 'X'
@@ -39,10 +33,14 @@ let PlayGame = function(){
     }]
     let moves = 0
     let nextPlayerMove = players[0]
-
-    function askPlayerMove(place){
-        if()
+    function printBoard(board){
+        
     }
+    // function askPlayerMove(place){
+    //     if(board[place].value!==''){
+
+    //     }
+    // }
 }        
 PlayGame()
 //DisplayGame will be inside an iife as there will only be one game to display

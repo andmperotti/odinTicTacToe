@@ -1,27 +1,36 @@
-// createPlayer factory function  creates an object that represents each player playing the game , for now these will just have a name and marker.
-//These players are primarily used in the gameboard so I'll move them there.
-const players = (()=>{
-    function createPlayer(name, marker){
-        this.name = name
-        this.marker=marker
-        this.getName=()=>this.name
-        this.getMarker=()=>this.marker
-        return {getName, getMarker}
-    }
-    
-    this.playerOne = createPlayer('one', 'X')
-    this.playerTwo = createPlayer('two', 'O')
-    return {playerOne, playerTwo}
-})()
-
-
-// gameboard will be an object 
-//     will contain an array of players, 2 for tictactoe
+// Gameboard will be an object 
+//     will the players object
 //     will also contain an array which represents the placements/moves on the board, starts as an empty array, users will click on specific gui places to place their marker and this array will fill in as users place their markers
 
-const gameBoard = (()=>{
-    this.players= [players.playerOne, players.playerTwo]
-    this.gamesBoard = Array(9)
+const Gameboard = (()=>{
+    // createPlayer factory function  creates an object that represents each player playing the game , for now these will just have a name and marker.
+    const players = (()=>{
+        function createPlayer(name, marker){
+            this.name = name
+            this.marker=marker
+            this.getName=()=>this.name
+            this.getMarker=()=>this.marker
+            return {getName, getMarker}
+        }
+        
+        this.playerOne = createPlayer('one', 'X')
+        this.playerTwo = createPlayer('two', 'O')
+        return {playerOne, playerTwo}
+    })()
+    //The games board consists of 9 spaces but instead of just building an array of 9 empty elements, we can build an array of 3 sub arrays, one for each row of the games grid, and with that we can better display results in the console version of the game as well.
+    this.gamesBoard = []
+    for(let i = 0; i<3; i++){
+        let tempRow=Array()
+        for(let j = 0; j<3; j++){
+            tempRow.push(Cell())
+        }
+        gamesBoard.push(tempRow)
+    }
+    //We need a function that creates a game cell also known as a place where player markers will be placed also known as the gameboard's array elements.
+    function Cell(player, ){
+
+    }
+
     return {players, gamesBoard}
 })()
 

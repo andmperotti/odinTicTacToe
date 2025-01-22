@@ -53,6 +53,7 @@ body,
 #gameBoard {
     display: grid;
     justify-content: center;
+    gap: 20px;
 }
 
 #boardRow{
@@ -60,3 +61,11 @@ body,
     grid-template-columns: repeat(3, 1fr);
 }
 
+h1 {
+    font-size: 2rem;
+}
+.marker{
+    display: inline;
+    font-size: 5rem;
+    background-color: lightgray;
+}

@@ -51,11 +51,11 @@ let PlayGame = function(){
         while(moves<9&&!winner){
             printBoard()
             askPlayerMove(nextPlayerMove)
-            checkWinner(board)
+            checkWinner()
         }
     }
 
-    function checkWinner(boardArr){
+    function checkWinner(boardArr=board){
         if( //player 1 possible winning combinations
             //horizontals
             (boardArr[0].getValue()==='X'&&boardArr[1].getValue()==='X'&&boardArr[2].getValue()==='X')||

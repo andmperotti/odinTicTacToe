@@ -96,3 +96,12 @@ let PlayGame = function(){
     }
     return{playTicTacToe, printBoard, checkWinner}
 }()        
+
+
+//object that handles the display/dom logic
+//function that renders contents of gameboard array to the webpage
+
+//functions that allow players to add marks to a specific spot on the board via interacting with the appropriate dom elements, remember to write logic that forbids overwriting an already used position.
+
+//button to start/restart game
+//display elements that shows the result of the game upon it ending

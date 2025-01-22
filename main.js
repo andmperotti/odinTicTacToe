@@ -6,14 +6,13 @@ let GameBoard = (function(){
     for(let i = 0; i<board.length; i++){
         board[i]=new Cell()
     }
+    function Cell(){
+        this.value = '_';
+        this.getValue = ()=>this.value
+        this. setValue = (marker)=>this.value=marker
+    }
     return {board}
 })()
-
-function Cell(){
-    this.value = '_';
-    this.getValue = ()=>this.value
-    this. setValue = (marker)=>this.value=marker
-}
 
 //PlayGame will be an object, but inside an iife because we only want one game to be playing
     //an instance of the GameBoard is imported and used

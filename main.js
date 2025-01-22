@@ -96,11 +96,22 @@ let PlayGame = function(){
     }
     return{playTicTacToe, printBoard, checkWinner}
 }()        
-
+PlayGame.playTicTacToe()
 
 //object that handles the display/dom logic
 //function that renders contents of gameboard array to the webpage
-
+let displayGame = (function(board){
+    //make a nodelist of all of the div.marker elements and turn it into an array, and since they'll be in order of how the board gets painted then you can iterate over them and paint markers appropriately, using a variable that is the gameboard array values as well
+    function markPositions(boardArr){
+        let markerElements = Array.from(document.querySelectorAll('.marker'))
+        let gameBoardValues = Array.from(boardArr, marker=>marker.getValue())
+        for(let i = 0; i<9; i++){
+            markerElements[i].textContent = `${gameBoardValues[i]}`
+        }
+    }
+    return {markPositions}
+})()
+displayGame.markPositions(GameBoard.board)
 //functions that allow players to add marks to a specific spot on the board via interacting with the appropriate dom elements, remember to write logic that forbids overwriting an already used position.
 
 //button to start/restart game

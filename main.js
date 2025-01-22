@@ -47,11 +47,12 @@ let PlayGame = function(){
         changePlayer()
     }
     //play loop
-    while(moves<9&&!winner){
-        printBoard()
-        askPlayerMove(nextPlayerMove)
-        checkWinner(board)
-
+    function playTicTacToe(){
+        while(moves<9&&!winner){
+            printBoard()
+            askPlayerMove(nextPlayerMove)
+            checkWinner(board)
+        }
     }
 
     function checkWinner(boardArr){
@@ -93,5 +94,5 @@ let PlayGame = function(){
             console.log('Tie!')
         }
     }
-    return{}
+    return{playTicTacToe}
 }()        

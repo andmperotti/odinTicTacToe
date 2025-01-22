@@ -2,17 +2,19 @@
     //board array, stores cells of playing board
         //Cells should be instances of an object that has a value and maybe methods to change and access that value (value, getValue, setValue)
 let GameBoard = (function(){
-    const board = new Array(9).fill(Cell())
+    let board = new Array(9)
+    for(let i = 0; i<board.length; i++){
+        board[i]=new Cell()
+    }
     return {board}
 })()
 
 function Cell(){
-    let value = '_';
-    const getValue = ()=>value
-    const setValue = (player)=>value=player.marker
-
-    return {getValue, setValue}
+    this.value = '_';
+    this.getValue = ()=>this.value
+    this. setValue = (marker)=>this.value=marker
 }
+
 //PlayGame will be an object, but inside an iife because we only want one game to be playing
     //an instance of the GameBoard is imported and used
     //players object holds the players and their name and marker
@@ -24,7 +26,9 @@ function Cell(){
         //If there is a winner stop the playing and declare a winner, in html you can add a class to highlight the cells of the winning placements. Otherwise keep playing the game
 let PlayGame = function(){
     let board= GameBoard.board
-    const players = [{
+    console.log(board[0])
+    const players = [
+        {
         name: 'player 1', 
         marker: 'X'
     },{
@@ -44,15 +48,15 @@ let PlayGame = function(){
         console.log(`${board[6].getValue()} ${board[7].getValue()} ${board[8].getValue()}`)
     }
     function askPlayerMove(player){
-        let place = prompt(`What position, ${nextPlayerMove.name} would you like to take? `)
-        if(board[place].getValue()==='_'){
+        let place = +prompt(`What position, ${nextPlayerMove.name} would you like to take? `)
+        if(board[place]&&board[place].getValue()==='_'){
             board[place].setValue(nextPlayerMove.marker)
+            moves++
+            checkWinner()
+            changePlayer()
         }else{
             askPlayerMove(player)
         }
-        moves++
-        checkWinner()
-        changePlayer()
     }
     while(moves<10&&!winner){
         printBoard()

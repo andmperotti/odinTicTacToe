@@ -26,7 +26,6 @@ function Cell(){
         //If there is a winner stop the playing and declare a winner, in html you can add a class to highlight the cells of the winning placements. Otherwise keep playing the game
 let PlayGame = function(){
     let board= GameBoard.board
-    console.log(board[0])
     const players = [
         {
         name: 'player 1', 
@@ -50,14 +49,18 @@ let PlayGame = function(){
     function askPlayerMove(player){
         let place = +prompt(`What position, ${nextPlayerMove.name} would you like to take? `)
         if(board[place]&&board[place].getValue()==='_'){
-            board[place].setValue(nextPlayerMove.marker)
-            moves++
-            changePlayer()
+            setPlayerMarker(place)
         }else{
             askPlayerMove(player)
         }
     }
-    while(moves<9||winner){
+    function setPlayerMarker(position){
+        board[position].setValue(nextPlayerMove.marker)
+        moves++
+        changePlayer()
+    }
+    //play loop
+    while(moves<9&&!winner){
         printBoard()
         askPlayerMove(nextPlayerMove)
         checkWinner()

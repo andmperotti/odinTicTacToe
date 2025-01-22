@@ -48,3 +48,15 @@ table {
 }
 
 /* my css */
+body,
+#container,
+#gameBoard {
+    display: grid;
+    justify-content: center;
+}
+
+#boardRow{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+

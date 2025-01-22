@@ -28,10 +28,10 @@ let PlayGame = function(){
     function changePlayer(){
         nextPlayerMove===players[0] ? nextPlayerMove=players[1] : nextPlayerMove=players[0]
     }
-    function printBoard(){
-        console.log(`${board[0].getValue()} ${board[1].getValue()} ${board[2].getValue()}`)
-        console.log(`${board[3].getValue()} ${board[4].getValue()} ${board[5].getValue()}`)
-        console.log(`${board[6].getValue()} ${board[7].getValue()} ${board[8].getValue()}`)
+    function printBoard(boardArr){
+        console.log(`${boardArr[0].getValue()} ${boardArr[1].getValue()} ${boardArr[2].getValue()}`)
+        console.log(`${boardArr[3].getValue()} ${boardArr[4].getValue()} ${boardArr[5].getValue()}`)
+        console.log(`${boardArr[6].getValue()} ${boardArr[7].getValue()} ${boardArr[8].getValue()}`)
     }
     function askPlayerMove(player){
         let place = +prompt(`What position, ${nextPlayerMove.name} would you like to take? `)
@@ -94,5 +94,5 @@ let PlayGame = function(){
             console.log('Tie!')
         }
     }
-    return{playTicTacToe}
+    return{playTicTacToe, printBoard}
 }()        

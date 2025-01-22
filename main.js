@@ -94,5 +94,5 @@ let PlayGame = function(){
             console.log('Tie!')
         }
     }
-    return{playTicTacToe, printBoard}
+    return{playTicTacToe, printBoard, checkWinner}
 }()        

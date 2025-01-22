@@ -52,15 +52,16 @@ let PlayGame = function(){
         if(board[place]&&board[place].getValue()==='_'){
             board[place].setValue(nextPlayerMove.marker)
             moves++
-            checkWinner()
             changePlayer()
         }else{
             askPlayerMove(player)
         }
     }
-    while(moves<10&&!winner){
+    while(moves<9||winner){
         printBoard()
         askPlayerMove(nextPlayerMove)
+        checkWinner()
+
     }
 
     function checkWinner(){
@@ -97,7 +98,7 @@ let PlayGame = function(){
             winner=true
             printBoard()
             console.log(`player 2 wins!`)
-        }else if(!winner&&moves>9){ //tie game
+        }else if(!winner&&moves===9){ //tie game
             console.log('Tie!')
         }
     }

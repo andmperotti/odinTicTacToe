@@ -93,5 +93,5 @@ let PlayGame = function(){
             console.log('Tie!')
         }
     }
-}        
-PlayGame()
+    return{}
+}()        

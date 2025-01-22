@@ -34,25 +34,30 @@ let PlayGame = function(){
         console.log(`${boardArr[6].getValue()} ${boardArr[7].getValue()} ${boardArr[8].getValue()}`)
     }
     function askPlayerMove(player){
-        let place = +prompt(`What position, ${nextPlayerMove.name} would you like to take? `)
-        if(board[place]&&board[place].getValue()==='_'){
-            setPlayerMarker(place)
-        }else{
-            askPlayerMove(player)
-        }
+        printBoard()
+        console.log(`${player} your turn to place your marker`)
     }
+    
+    //players will have to self invoke this and pass it 0->8 to fill a position in the board array
     function setPlayerMarker(position){
-        board[position].setValue(nextPlayerMove.marker)
-        moves++
-        changePlayer()
+        if(board[position]&&board[position].getValue()==='_'){
+            board[position].setValue(nextPlayerMove.marker)
+            moves++
+            changePlayer()
+            checkWinner()
+        }else{
+            console.log('That location is already taken, try again')
+        }
     }
     //play loop
     function playTicTacToe(){
         while(moves<9&&!winner){
-            printBoard()
             askPlayerMove(nextPlayerMove)
-            checkWinner()
+            // huh?
         }
+        }
+
+
     }
 
     function checkWinner(boardArr=board){

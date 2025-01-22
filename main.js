@@ -50,23 +50,23 @@ let PlayGame = function(){
     while(moves<9&&!winner){
         printBoard()
         askPlayerMove(nextPlayerMove)
-        checkWinner()
+        checkWinner(board)
 
     }
 
-    function checkWinner(){
+    function checkWinner(boardArr){
         if( //player 1 possible winning combinations
             //horizontals
-            (board[0].getValue()==='X'&&board[1].getValue()==='X'&&board[2].getValue()==='X')||
-            (board[3].getValue()==='X'&&board[4].getValue()==='X'&&board[5].getValue()==='X')||
-            (board[6].getValue()==='X'&&board[7].getValue()==='X'&&board[8].getValue()==='X') ||
+            (boardArr[0].getValue()==='X'&&boardArr[1].getValue()==='X'&&boardArr[2].getValue()==='X')||
+            (boardArr[3].getValue()==='X'&&boardArr[4].getValue()==='X'&&boardArr[5].getValue()==='X')||
+            (boardArr[6].getValue()==='X'&&boardArr[7].getValue()==='X'&&boardArr[8].getValue()==='X') ||
             //verticals
-            (board[0].getValue()==='X'&&board[3].getValue()==='X'&&board[6].getValue()==='X')||
-            (board[1].getValue()==='X'&&board[4].getValue()==='X'&&board[7].getValue()==='X')||
-            (board[2].getValue()==='X'&&board[5].getValue()==='X'&&board[8].getValue()==='X') ||
+            (boardArr[0].getValue()==='X'&&boardArr[3].getValue()==='X'&&boardArr[6].getValue()==='X')||
+            (boardArr[1].getValue()==='X'&&boardArr[4].getValue()==='X'&&boardArr[7].getValue()==='X')||
+            (boardArr[2].getValue()==='X'&&boardArr[5].getValue()==='X'&&boardArr[8].getValue()==='X') ||
             //diagonals
-            (board[0].getValue()==='X'&&board[4].getValue()==='X'&&board[8].getValue()==='X') ||
-            (board[6].getValue()==='X'&&board[4].getValue()==='X'&&board[2].getValue()==='X')
+            (boardArr[0].getValue()==='X'&&boardArr[4].getValue()==='X'&&boardArr[8].getValue()==='X') ||
+            (boardArr[6].getValue()==='X'&&boardArr[4].getValue()==='X'&&boardArr[2].getValue()==='X')
         ){
             winner = true;
             printBoard()
@@ -74,16 +74,16 @@ let PlayGame = function(){
 
         }else if(
             //player 2 possible winning combinations
-            (board[0].getValue()==='O'&&board[1].getValue()==='O'&&board[2].getValue()==='O')||
-            (board[3].getValue()==='O'&&board[4].getValue()==='O'&&board[5].getValue()==='O')||
-            (board[6].getValue()==='O'&&board[7].getValue()==='O'&&board[8].getValue()==='O') ||
+            (boardArr[0].getValue()==='O'&&boardArr[1].getValue()==='O'&&boardArr[2].getValue()==='O')||
+            (boardArr[3].getValue()==='O'&&boardArr[4].getValue()==='O'&&boardArr[5].getValue()==='O')||
+            (boardArr[6].getValue()==='O'&&boardArr[7].getValue()==='O'&&boardArr[8].getValue()==='O') ||
             //verticals
-            (board[0].getValue()==='O'&&board[3].getValue()==='O'&&board[6].getValue()==='O')||
-            (board[1].getValue()==='O'&&board[4].getValue()==='O'&&board[7].getValue()==='O')||
-            (board[2].getValue()==='O'&&board[5].getValue()==='O'&&board[8].getValue()==='O') ||
+            (boardArr[0].getValue()==='O'&&boardArr[3].getValue()==='O'&&boardArr[6].getValue()==='O')||
+            (boardArr[1].getValue()==='O'&&boardArr[4].getValue()==='O'&&boardArr[7].getValue()==='O')||
+            (boardArr[2].getValue()==='O'&&boardArr[5].getValue()==='O'&&boardArr[8].getValue()==='O') ||
             //diagonals
-            (board[0].getValue()==='O'&&board[4].getValue()==='O'&&board[8].getValue()==='O') ||
-            (board[6].getValue()==='O'&&board[4].getValue()==='O'&&board[2].getValue()==='O')
+            (boardArr[0].getValue()==='O'&&boardArr[4].getValue()==='O'&&boardArr[8].getValue()==='O') ||
+            (boardArr[6].getValue()==='O'&&boardArr[4].getValue()==='O'&&boardArr[2].getValue()==='O')
         ){
             winner=true
             printBoard()

@@ -9,6 +9,18 @@
 <body>
     <div id="container">
         <h1 id="title">TicTacToe</h1>
+        <div id="nameChange">
+            <form>
+                <label for="playerOneName">Player One's Name:
+                    <input id="playerOneName" name="playerOneName">
+                </label>
+                <label for="playerTwoName">Player Two's Name:
+                    <input id="playerTwoName" name="playerTwoName">
+                </label>
+                <button>Change</button>
+            <form>
+        </div>
+        <button>Start/Reset</button>
         <div id="gameBoard">
             <section class="boardRow">
                 <div class="marker" data-marker-position="0"></div>
@@ -26,6 +38,7 @@
                 <div class="marker" data-marker-position="8"></div>
             </section>
         </div>
+        <h2 id="result"></h2>
     </div>
 
     <script src="main.js">

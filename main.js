@@ -46,6 +46,7 @@ let PlayGame = function(){
             moves++
             changePlayer()
             checkWinner()
+            displayGame.markPositions(GameBoard.board)
         }else{
             console.log('That location is already taken, try again')
         }
@@ -105,13 +106,12 @@ let PlayGame = function(){
 
 //object that handles the display/dom logic
 //function that renders contents of gameboard array to the webpage
-let displayGame = (function(board){
+let displayGame = (function(){
     //make a nodelist of all of the div.marker elements and turn it into an array, and since they'll be in order of how the board gets painted then you can iterate over them and paint markers appropriately, using a variable that is the gameboard array values as well
     function markPositions(boardArr){
         let markerElements = Array.from(document.querySelectorAll('.marker'))
-        let gameBoardValues = Array.from(boardArr, marker=>marker.getValue())
         for(let i = 0; i<9; i++){
-            markerElements[i].textContent = `${gameBoardValues[i]}`
+            markerElements[i].textContent = `${boardArr[i].getValue()}`
         }
     }
     return {markPositions}

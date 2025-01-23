@@ -63,9 +63,13 @@ body,
 
 h1 {
     font-size: 2rem;
+    text-align: center;
 }
 .marker{
     display: inline;
     font-size: 5rem;
     background-color: lightgray;
+}
+h2 {
+    text-align: center;
 }

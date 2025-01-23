@@ -17,15 +17,15 @@ let PlayGame = function(){
         {
         name: 'player 1', 
         marker: 'X'
-    },{
+        },
+        {
         name: 'player 2', 
         marker: 'O'
-    }]
+        },
+    ]
     let moves = 0
     let nextPlayerMove = players[0]
     let winner = false
-    let markerElements = Array.from(document.querySelectorAll('.marker'))
-
     function changePlayer(){
         nextPlayerMove===players[0] ? nextPlayerMove=players[1] : nextPlayerMove=players[0]
     }
@@ -34,12 +34,6 @@ let PlayGame = function(){
         console.log(`${boardArr[3].getValue()} ${boardArr[4].getValue()} ${boardArr[5].getValue()}`)
         console.log(`${boardArr[6].getValue()} ${boardArr[7].getValue()} ${boardArr[8].getValue()}`)
     }
-    // function askPlayerMove(player){
-    //     printBoard()
-    //     console.log(`${player} your turn to place your marker`)
-    // }
-    
-    //players will have to self invoke this and pass it 0->8 to fill a position in the board array
     function setPlayerMarker(position){
         if(board[position]&&board[position].getValue()==='_'){
             board[position].setValue(nextPlayerMove.marker)
@@ -52,17 +46,6 @@ let PlayGame = function(){
             console.log('That location is already taken, try again')
         }
     }
-    // //play loop
-    // function playTicTacToe(){
-    //     while(moves<9&&!winner){
-    //         askPlayerMove(nextPlayerMove)
-    //         // huh?
-    //     }
-    //     }
-
-
-    // }
-
     function checkWinner(boardArr=board){
         if( //player 1 possible winning combinations
             //horizontals
@@ -80,7 +63,6 @@ let PlayGame = function(){
             winner = true;
             printBoard()
             console.log(`player 1 wins!`)
-
         }else if(
             //player 2 possible winning combinations
             (boardArr[0].getValue()==='O'&&boardArr[1].getValue()==='O'&&boardArr[2].getValue()==='O')||
@@ -102,23 +84,27 @@ let PlayGame = function(){
             console.log('Tie!')
         }
     }
+    //variable which targets the board parent element and listener to place markers on click
+    let gameBoardElement = document.querySelector('#gameBoard')
+    gameBoardElement.addEventListener('click', e=>{
+        setPlayerMarker(e.target.dataset.markerPosition, )
+    })
+
     return{setPlayerMarker, printBoard, checkWinner}
 }()        
 
-//object that handles the display/dom logic
-//function that renders contents of gameboard array to the webpage
+
 let displayGame = (function(){
-    //make a nodelist of all of the div.marker elements and turn it into an array, and since they'll be in order of how the board gets painted then you can iterate over them and paint markers appropriately, using a variable that is the gameboard array values as well
-    function markPositions(boardArr, markerElements){
+    let markerElements = Array.from(document.querySelectorAll('.marker'))
+    function markPositions(boardArr){
         for(let i = 0; i<9; i++){
             markerElements[i].textContent = `${boardArr[i].getValue()}`
         }
     }
     return {markPositions}
 })()
-displayGame.markPositions(GameBoard.board, markerElements)
-//functions that allow players to add marks to a specific spot on the board via interacting with the appropriate dom elements, remember to write logic that forbids overwriting an already used position.
-//will add this into PlayGame
+displayGame.markPositions(GameBoard.board)
+
 
 //button to start/restart game
 //display elements that shows the result of the game upon it ending

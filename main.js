@@ -33,10 +33,10 @@ let PlayGame = function(){
         console.log(`${boardArr[3].getValue()} ${boardArr[4].getValue()} ${boardArr[5].getValue()}`)
         console.log(`${boardArr[6].getValue()} ${boardArr[7].getValue()} ${boardArr[8].getValue()}`)
     }
-    function askPlayerMove(player){
-        printBoard()
-        console.log(`${player} your turn to place your marker`)
-    }
+    // function askPlayerMove(player){
+    //     printBoard()
+    //     console.log(`${player} your turn to place your marker`)
+    // }
     
     //players will have to self invoke this and pass it 0->8 to fill a position in the board array
     function setPlayerMarker(position){
@@ -49,16 +49,16 @@ let PlayGame = function(){
             console.log('That location is already taken, try again')
         }
     }
-    //play loop
-    function playTicTacToe(){
-        while(moves<9&&!winner){
-            askPlayerMove(nextPlayerMove)
-            // huh?
-        }
-        }
+    // //play loop
+    // function playTicTacToe(){
+    //     while(moves<9&&!winner){
+    //         askPlayerMove(nextPlayerMove)
+    //         // huh?
+    //     }
+    //     }
 
 
-    }
+    // }
 
     function checkWinner(boardArr=board){
         if( //player 1 possible winning combinations
@@ -99,9 +99,8 @@ let PlayGame = function(){
             console.log('Tie!')
         }
     }
-    return{playTicTacToe, printBoard, checkWinner}
+    return{setPlayerMarker, printBoard, checkWinner}
 }()        
-PlayGame.playTicTacToe()
 
 //object that handles the display/dom logic
 //function that renders contents of gameboard array to the webpage

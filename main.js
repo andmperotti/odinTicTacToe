@@ -16,11 +16,11 @@ let PlayGame = function(){
     const players = [
         {
         name: 'player 1', 
-        marker: 'X'
+        marker: 'X', 
         },
         {
         name: 'player 2', 
-        marker: 'O'
+        marker: 'O',
         },
     ]
     let moves = 0
@@ -90,21 +90,27 @@ let PlayGame = function(){
         setPlayerMarker(e.target.dataset.markerPosition, )
     })
 
-    return{setPlayerMarker, printBoard, checkWinner}
+    return{setPlayerMarker, printBoard, checkWinner, players}
 }()        
 
 
 let displayGame = (function(){
     let markerElements = Array.from(document.querySelectorAll('.marker'))
+    let playerElements = Array(document.querySelector('#playerOneName'), document.querySelector('#playerTwoName'))
+
     function markPositions(boardArr){
         for(let i = 0; i<9; i++){
             markerElements[i].textContent = `${boardArr[i].getValue()}`
         }
     }
-    return {markPositions}
+    function displayPlayerNames(players){
+        document.querySelector('#playerOneDisplay').textContent=players[0].name
+        document.querySelector('#playerTwoDisplay').textContent=players[1].name
+    }
+    return {markPositions, displayPlayerNames}
 })()
 displayGame.markPositions(GameBoard.board)
-
+displayGame.displayPlayerNames(PlayGame.players)
 
 //interface element to change player names
     //function that inserts players names, is triggered when the below is invoked as well

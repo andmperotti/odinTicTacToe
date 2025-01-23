@@ -107,9 +107,14 @@ displayGame.markPositions(GameBoard.board)
 
 
 //interface element to change player names
-    //function
+    //function called when button clicked, by default submits nowhere
 //button to start/restart game
     //functions
-    //buttons in html
+    //buttons in html, work at resetting by default because submitting data
+    //this button will not just wipe the stats and board but also wipe the result display described below, but don't wipe the player names i'm assuming
 //display elements that shows the result of the game upon it ending
     //new html element dynamically populated with content after result
+
+
+//extras:
+//try to add a class to the elements that made up the winning combination and give that class a background color in the css.

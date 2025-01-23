@@ -107,7 +107,9 @@ displayGame.markPositions(GameBoard.board)
 
 
 //interface element to change player names
-    //function called when button clicked, by default submits nowhere
+    //function that inserts players names, is triggered when the below is invoked as well
+    //function called when button clicked, by default submits nowhere, will change the name of the player in the PlayGame object and change the value in the displayed #players elements
+    //add class and dynamically use it on the display name of the user whose turn it is to mark a spot on the board
 //button to start/restart game
     //functions
     //buttons in html, work at resetting by default because submitting data
@@ -117,4 +119,4 @@ displayGame.markPositions(GameBoard.board)
 
 
 //extras:
-//try to add a class to the elements that made up the winning combination and give that class a background color in the css.
+//try to add a class to the elements that made up the winning combination and give that class a background color in the css. You can use the same class to highlight the player whose turn it is, and to highlight the winning player name at conclusion of the game.

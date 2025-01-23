@@ -97,6 +97,7 @@ let PlayGame = function(){
 let displayGame = (function(){
     let markerElements = Array.from(document.querySelectorAll('.marker'))
     let playerElements = Array(document.querySelector('#playerOneName'), document.querySelector('#playerTwoName'))
+    let nameChangeButton = document.querySelector('#nameChange')
 
     function markPositions(boardArr){
         for(let i = 0; i<9; i++){
@@ -107,6 +108,21 @@ let displayGame = (function(){
         document.querySelector('#playerOneDisplay').textContent=players[0].name
         document.querySelector('#playerTwoDisplay').textContent=players[1].name
     }
+    function changePlayerNames(players){
+        let playerOneNewName = document.querySelector('#playerOneName').value
+        let playerTwoNewName = document.querySelector('#playerTwoName').value
+        if(playerOneNewName!==players[0].name&&playerOneNewName.length>0){
+            PlayGame.players[0].name=playerOneNewName
+        }
+        if(playerTwoNewName!==players[1].name&&playerTwoNewName.length>0){
+            PlayGame.players[1].name=playerTwoNewName
+        }
+        displayPlayerNames(players)
+
+    }
+    nameChangeButton.addEventListener('click', e=>{
+        changePlayerNames(PlayGame.players)
+    })
     return {markPositions, displayPlayerNames}
 })()
 displayGame.markPositions(GameBoard.board)

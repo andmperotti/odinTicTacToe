@@ -24,6 +24,7 @@ let PlayGame = function(){
     let moves = 0
     let nextPlayerMove = players[0]
     let winner = false
+    let markerElements = Array.from(document.querySelectorAll('.marker'))
 
     function changePlayer(){
         nextPlayerMove===players[0] ? nextPlayerMove=players[1] : nextPlayerMove=players[0]
@@ -108,16 +109,16 @@ let PlayGame = function(){
 //function that renders contents of gameboard array to the webpage
 let displayGame = (function(){
     //make a nodelist of all of the div.marker elements and turn it into an array, and since they'll be in order of how the board gets painted then you can iterate over them and paint markers appropriately, using a variable that is the gameboard array values as well
-    function markPositions(boardArr){
-        let markerElements = Array.from(document.querySelectorAll('.marker'))
+    function markPositions(boardArr, markerElements){
         for(let i = 0; i<9; i++){
             markerElements[i].textContent = `${boardArr[i].getValue()}`
         }
     }
     return {markPositions}
 })()
-displayGame.markPositions(GameBoard.board)
+displayGame.markPositions(GameBoard.board, markerElements)
 //functions that allow players to add marks to a specific spot on the board via interacting with the appropriate dom elements, remember to write logic that forbids overwriting an already used position.
+//will add this into PlayGame
 
 //button to start/restart game
 //display elements that shows the result of the game upon it ending

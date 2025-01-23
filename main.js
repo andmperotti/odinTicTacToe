@@ -106,5 +106,10 @@ let displayGame = (function(){
 displayGame.markPositions(GameBoard.board)
 
 
+//interface element to change player names
+    //function
 //button to start/restart game
+    //functions
+    //buttons in html
 //display elements that shows the result of the game upon it ending
+    //new html element dynamically populated with content after result

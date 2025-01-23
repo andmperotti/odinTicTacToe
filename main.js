@@ -42,6 +42,7 @@ let PlayGame = function(){
     function setPlayerMarker(position){
         if(board[position]&&board[position].getValue()==='_'){
             board[position].setValue(nextPlayerMove.marker)
+            console.log(`${nextPlayerMove.name} has marked position ${position} with an ${nextPlayerMove.marker} successfully!`)
             moves++
             changePlayer()
             checkWinner()

@@ -42,9 +42,9 @@ let PlayGame = function(){
             console.log(`${nextPlayerMove.name} has marked position ${position} with an ${nextPlayerMove.marker} successfully!`)
             moves++
             changePlayer()
-            checkWinner()
             displayGame.markPositions(GameBoard.board)
             displayGame.highlightCurrentPlayer(moves)
+            checkWinner()
         }else{
             console.log('That location is already taken, try again')
         }

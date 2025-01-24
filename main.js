@@ -127,7 +127,7 @@ let PlayGame = function(){
         displayGame.unhighlightElements()
     }
     restartButton.addEventListener('click', e=>{
-        displayGame.winningArr=[]
+        displayGame.winningArr.splice(0,3)
         restartGame()
     })
 
@@ -191,7 +191,7 @@ let displayGame = (function(){
         ){
             winningArr.push(6,7,8)
         }else if(   //verticals
-            board[0].getValue()===board[3].getValue()&&board[3].getValue()===board[0].getValue()
+            board[0].getValue()===board[3].getValue()&&board[3].getValue()===board[6].getValue()
         ){
             winningArr.push(0,3,6)
         }else if(
@@ -209,6 +209,8 @@ let displayGame = (function(){
             board[2].getValue()===board[4].getValue()&&board[4].getValue()===board[6].getValue()
         ){
             winningArr.push(2,4,6)
+        }else{
+            winningArr.splice(0,3)
         }
     }
     function highlightWinningElements(){

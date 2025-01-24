@@ -25,7 +25,8 @@ let PlayGame = function(){
     ]
     let moves = 0
     let nextPlayerMove = players[0]
-    let winner = false    
+    let winner = false
+
     function changePlayer(){
         nextPlayerMove===players[0] ? nextPlayerMove=players[1] : nextPlayerMove=players[0]
     }
@@ -134,11 +135,11 @@ let displayGame = (function(){
         if(playerTwoNewName!==players[1].name&&playerTwoNewName.length>0){
             PlayGame.players[1].name=playerTwoNewName
         }
-        displayPlayerNames(players)
 
     }
     nameChangeButton.addEventListener('click', e=>{
         changePlayerNames(PlayGame.players)
+        displayPlayerNames(PlayGame.players)
     })
     return {markPositions, displayPlayerNames}
 })()

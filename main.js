@@ -62,7 +62,7 @@ let PlayGame = function(){
         ){
             winner = true;
             printBoard()
-            console.log(`player 1 wins!`)
+            console.log(`${players[0].name} wins!`)
         }else if(
             //player 2 possible winning combinations
             (boardArr[0].getValue()==='O'&&boardArr[1].getValue()==='O'&&boardArr[2].getValue()==='O')||
@@ -78,7 +78,7 @@ let PlayGame = function(){
         ){
             winner=true
             printBoard()
-            console.log(`player 2 wins!`)
+            console.log(`${players[1].name} wins!`)
         }else if(!winner&&moves===9){ 
             //tie game
             console.log('Tie!')
@@ -148,9 +148,7 @@ displayGame.displayPlayerNames(PlayGame.players)
 //interface element to change player names
     //add class and dynamically use it on the display name of the user whose turn it is to mark a spot on the board
 //button to start/restart game
-    //functions
-    //buttons in html, work at resetting by default because submitting data
-    //this button will not just wipe the stats and board but also wipe the result display described below, but don't wipe the player names i'm assuming
+    //use highlight player function in here as well
 //display elements that shows the result of the game upon it ending
     //new html element dynamically populated with content after result
 

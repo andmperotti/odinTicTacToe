@@ -37,7 +37,7 @@ let PlayGame = function(){
         console.log(`${boardArr[6].getValue()} ${boardArr[7].getValue()} ${boardArr[8].getValue()}`)
     }
     function setPlayerMarker(position){
-        if(board[position]&&board[position].getValue()==='_'){
+        if(board[position]&&board[position].getValue()==='_'&&moves<9){
             board[position].setValue(nextPlayerMove.marker)
             console.log(`${nextPlayerMove.name} has marked position ${position} with an ${nextPlayerMove.marker} successfully!`)
             moves++
@@ -46,7 +46,7 @@ let PlayGame = function(){
             displayGame.highlightCurrentPlayer(moves)
             checkWinner()
         }else{
-            console.log('That location is already taken, try again')
+            console.log('That location is already taken or game is over')
         }
     }
     function checkWinner(boardArr=board){
@@ -70,6 +70,7 @@ let PlayGame = function(){
             displayGame.displayWinningStatement(winningStatement)
             displayGame.findWinningElements(GameBoard.board)
             displayGame.highlightWinningElements()
+            moves=9
         }else if(
             //player 2 possible winning combinations
             (boardArr[0].getValue()==='O'&&boardArr[1].getValue()==='O'&&boardArr[2].getValue()==='O')||
@@ -90,6 +91,7 @@ let PlayGame = function(){
             displayGame.displayWinningStatement(winningStatement)
             displayGame.findWinningElements(GameBoard.board)
             displayGame.highlightWinningElements()
+            moves=9
         }else if(!winner&&moves===9){ 
             //tie game
             console.log('Tie!')
@@ -97,6 +99,7 @@ let PlayGame = function(){
             displayGame.displayWinningStatement(winningStatement)
             displayGame.findWinningElements(GameBoard.board)
             displayGame.highlightWinningElements()
+            moves=9
         }
     }
     //variable which targets the board parent element and listener to place markers on click
@@ -124,6 +127,7 @@ let PlayGame = function(){
         displayGame.unhighlightElements()
     }
     restartButton.addEventListener('click', e=>{
+        displayGame.winningArr=[]
         restartGame()
     })
 
@@ -187,7 +191,7 @@ let displayGame = (function(){
         ){
             winningArr.push(6,7,8)
         }else if(   //verticals
-            board[0].getValue()===board[3].getValue()&&board[3].getValue()===board[0].getValue(6)
+            board[0].getValue()===board[3].getValue()&&board[3].getValue()===board[0].getValue()
         ){
             winningArr.push(0,3,6)
         }else if(
@@ -206,19 +210,18 @@ let displayGame = (function(){
         ){
             winningArr.push(2,4,6)
         }
-
     }
     function highlightWinningElements(){
         for(let i = 0; i<3; i++){
+            //pull each out of the winningArr array and since these values are representative of the marker positions use them as the index to the markerElements
             markerElements[winningArr[i]].classList.add('combination')
         }
-        //would need to remove this class from all when game is restarted
     }
     function unhighlightElements(){
         markerElements.forEach(marker=>marker.classList.remove('combination'))
     }
 
-    return {markPositions, displayPlayerNames, displayWinningStatement, highlightCurrentPlayer, findWinningElements, highlightWinningElements, unhighlightElements}
+    return {markPositions, displayPlayerNames, displayWinningStatement, highlightCurrentPlayer, findWinningElements, highlightWinningElements, unhighlightElements, winningArr}
 })()
 displayGame.markPositions(GameBoard.board)
 displayGame.displayPlayerNames(PlayGame.players)

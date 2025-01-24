@@ -26,6 +26,7 @@ let PlayGame = function(){
     let moves = 0
     let nextPlayerMove = players[0]
     let winner = false
+    let winningStatement
 
     function changePlayer(){
         nextPlayerMove===players[0] ? nextPlayerMove=players[1] : nextPlayerMove=players[0]
@@ -64,6 +65,8 @@ let PlayGame = function(){
             winner = true;
             printBoard()
             console.log(`${players[0].name} wins!`)
+            winningStatement = `${players[0].name} wins!`
+            displayGame.displayWinningStatement(winningStatement)
         }else if(
             //player 2 possible winning combinations
             (boardArr[0].getValue()==='O'&&boardArr[1].getValue()==='O'&&boardArr[2].getValue()==='O')||
@@ -80,9 +83,13 @@ let PlayGame = function(){
             winner=true
             printBoard()
             console.log(`${players[1].name} wins!`)
+            winningStatement = `${players[1].name} wins!`
+            displayGame.displayWinningStatement(winningStatement)
         }else if(!winner&&moves===9){ 
             //tie game
             console.log('Tie!')
+            winningStatement = 'Tie!'
+            displayGame.displayWinningStatement(winningStatement)
         }
     }
     //variable which targets the board parent element and listener to place markers on click
@@ -103,12 +110,14 @@ let PlayGame = function(){
         nextPlayerMove=players[0]
         winner=false
         displayGame.markPositions(board)
+        winningStatement = ''
+        displayGame.displayWinningStatement(winningStatement)
     }
     restartButton.addEventListener('click', e=>{
         restartGame()
     })
 
-    return{setPlayerMarker, printBoard, checkWinner, players, restartGame}
+    return{setPlayerMarker, printBoard, checkWinner, players, restartGame, winningStatement}
 }()        
 
 
@@ -135,16 +144,21 @@ let displayGame = (function(){
         if(playerTwoNewName!==players[1].name&&playerTwoNewName.length>0){
             PlayGame.players[1].name=playerTwoNewName
         }
-
     }
     nameChangeButton.addEventListener('click', e=>{
         changePlayerNames(PlayGame.players)
         displayPlayerNames(PlayGame.players)
     })
-    return {markPositions, displayPlayerNames}
+    function displayWinningStatement(winningStatement){
+        let resultElement = document.querySelector('#result')
+        resultElement.textContent = winningStatement
+    }
+
+    return {markPositions, displayPlayerNames, displayWinningStatement}
 })()
 displayGame.markPositions(GameBoard.board)
 displayGame.displayPlayerNames(PlayGame.players)
+
 
 //interface element to change player names
     //add class and dynamically use it on the display name of the user whose turn it is to mark a spot on the board

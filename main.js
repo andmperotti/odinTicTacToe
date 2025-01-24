@@ -97,7 +97,7 @@ let PlayGame = function(){
 let displayGame = (function(){
     let markerElements = Array.from(document.querySelectorAll('.marker'))
     let playerElements = Array(document.querySelector('#playerOneName'), document.querySelector('#playerTwoName'))
-    let nameChangeButton = document.querySelector('#nameChange')
+    let nameChangeButton = document.querySelector('#nameChangeButton')
 
     function markPositions(boardArr){
         for(let i = 0; i<9; i++){

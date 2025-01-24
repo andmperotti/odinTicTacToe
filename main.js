@@ -6,7 +6,7 @@ let GameBoard = (function(){
     function Cell(){
         this.value = '_';
         this.getValue = ()=>this.value
-        this. setValue = (marker)=>this.value=marker
+        this.setValue = (marker)=>this.value=marker
     }
     return {board}
 })()
@@ -25,7 +25,7 @@ let PlayGame = function(){
     ]
     let moves = 0
     let nextPlayerMove = players[0]
-    let winner = false
+    let winner = false    
     function changePlayer(){
         nextPlayerMove===players[0] ? nextPlayerMove=players[1] : nextPlayerMove=players[0]
     }
@@ -90,7 +90,24 @@ let PlayGame = function(){
         setPlayerMarker(e.target.dataset.markerPosition, )
     })
 
-    return{setPlayerMarker, printBoard, checkWinner, players}
+    //dom element and function that allows players to restart game, aka wipe all variables to a fresh start, followed by applying it with a listener
+    let restartButton = document.querySelector('#restart')
+
+    function restartGame(){
+        //wipe board
+        for(let i = 0; i<9; i++){
+            board[i].setValue('_')
+        }
+        moves=0
+        nextPlayerMove=players[0]
+        winner=false
+        displayGame.markPositions(board)
+    }
+    restartButton.addEventListener('click', e=>{
+        restartGame()
+    })
+
+    return{setPlayerMarker, printBoard, checkWinner, players, restartGame}
 }()        
 
 
@@ -129,8 +146,6 @@ displayGame.markPositions(GameBoard.board)
 displayGame.displayPlayerNames(PlayGame.players)
 
 //interface element to change player names
-    //function that inserts players names, is triggered when the below is invoked as well
-    //function called when button clicked, by default submits nowhere, will change the name of the player in the PlayGame object and change the value in the displayed #players elements
     //add class and dynamically use it on the display name of the user whose turn it is to mark a spot on the board
 //button to start/restart game
     //functions
@@ -141,4 +156,4 @@ displayGame.displayPlayerNames(PlayGame.players)
 
 
 //extras:
-//try to add a class to the elements that made up the winning combination and give that class a background color in the css. You can use the same class to highlight the player whose turn it is, and to highlight the winning player name at conclusion of the game.
+//try to add a class to the elements that made up the winning combination and give that class a background color in the css. You can use the same class to highlight the player whose turn it is, and to highlight the winning player name at conclusion of the game. Maybe use a different color, like yellow for whose turn it is and green for winner and winning combination.

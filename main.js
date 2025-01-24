@@ -202,7 +202,7 @@ let displayGame = (function(){
         ){
             winningArr.push(0,4,8)
         }else if(
-            board[2].getValue()===board[4].getValue()&&board[4].getValue()&&board[6].getValue()
+            board[2].getValue()===board[4].getValue()&&board[4].getValue()===board[6].getValue()
         ){
             winningArr.push(2,4,6)
         }

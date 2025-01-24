@@ -223,6 +223,3 @@ let displayGame = (function(){
 displayGame.markPositions(GameBoard.board)
 displayGame.displayPlayerNames(PlayGame.players)
 displayGame.highlightCurrentPlayer(PlayGame.moves)
-
-//extras:
-//try to add a class to the elements that made up the winning combination, give it the same color as the winning Statement color

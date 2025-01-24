@@ -44,6 +44,7 @@ let PlayGame = function(){
             changePlayer()
             checkWinner()
             displayGame.markPositions(GameBoard.board)
+            displayGame.highlightCurrentPlayer(moves)
         }else{
             console.log('That location is already taken, try again')
         }
@@ -112,18 +113,19 @@ let PlayGame = function(){
         displayGame.markPositions(board)
         winningStatement = ''
         displayGame.displayWinningStatement(winningStatement)
+        displayGame.highlightCurrentPlayer(moves)
     }
     restartButton.addEventListener('click', e=>{
         restartGame()
     })
 
-    return{setPlayerMarker, printBoard, checkWinner, players, restartGame, winningStatement}
+    return{setPlayerMarker, printBoard, checkWinner, players, restartGame, winningStatement, moves}
 }()        
 
 
 let displayGame = (function(){
     let markerElements = Array.from(document.querySelectorAll('.marker'))
-    let playerElements = Array(document.querySelector('#playerOneName'), document.querySelector('#playerTwoName'))
+    let playerNameDisplay = Array(document.querySelector('#playerOneDisplay'), document.querySelector('#playerTwoDisplay'))
     let nameChangeButton = document.querySelector('#nameChangeButton')
 
     function markPositions(boardArr){
@@ -153,20 +155,21 @@ let displayGame = (function(){
         let resultElement = document.querySelector('#result')
         resultElement.textContent = winningStatement
     }
+    function highlightCurrentPlayer(moves){
+        if(moves%2===0){
+            playerNameDisplay[0].classList.add('highlight')
+            playerNameDisplay[1].classList.remove('highlight')
+        }else{
+            playerNameDisplay[1].classList.add('highlight')
+            playerNameDisplay[0].classList.remove('highlight')
+        }
+    }
 
-    return {markPositions, displayPlayerNames, displayWinningStatement}
+    return {markPositions, displayPlayerNames, displayWinningStatement, highlightCurrentPlayer}
 })()
 displayGame.markPositions(GameBoard.board)
 displayGame.displayPlayerNames(PlayGame.players)
-
-
-//interface element to change player names
-    //add class and dynamically use it on the display name of the user whose turn it is to mark a spot on the board
-//button to start/restart game
-    //use highlight player function in here as well
-//display elements that shows the result of the game upon it ending
-    //new html element dynamically populated with content after result
-
+displayGame.highlightCurrentPlayer(PlayGame.moves)
 
 //extras:
-//try to add a class to the elements that made up the winning combination and give that class a background color in the css. You can use the same class to highlight the player whose turn it is, and to highlight the winning player name at conclusion of the game. Maybe use a different color, like yellow for whose turn it is and green for winner and winning combination.
+//try to add a class to the elements that made up the winning combination, give it the same color as the winning Statement color

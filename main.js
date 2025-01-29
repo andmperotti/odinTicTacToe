@@ -3,14 +3,15 @@ let GameBoard = (function(){
     for(let i = 0; i<board.length; i++){
         board[i]=Cell()
     }
-    function Cell(){
-        let value = '_';
-        const getValue = ()=>value
-        const setValue = (marker)=>value=marker
-        return {getValue, setValue}
-    }
     return {board}
 })()
+
+function Cell(){
+    let value = '_';
+    const getValue = ()=>value
+    const setValue = (marker)=>value=marker
+    return {getValue, setValue}
+}
 
 let PlayGame = function(){
     let board= GameBoard.board

@@ -107,6 +107,7 @@ let PlayGame = function(){
     //variable which targets the board parent element and listener to place markers on click
     let gameBoardElement = document.querySelector('#gameBoard')
     gameBoardElement.addEventListener('click', e=>{
+        if(!e.target.dataset.markerPosition){return}
         setPlayerMarker(e.target.dataset.markerPosition, )
     })
 

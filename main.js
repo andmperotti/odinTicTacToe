@@ -1,12 +1,13 @@
 let GameBoard = (function(){
     let board = new Array(9)
     for(let i = 0; i<board.length; i++){
-        board[i]=new Cell()
+        board[i]=Cell()
     }
     function Cell(){
-        this.value = '_';
-        this.getValue = ()=>this.value
-        this.setValue = (marker)=>this.value=marker
+        let value = '_';
+        const getValue = ()=>value
+        const setValue = (marker)=>value=marker
+        return {getValue, setValue}
     }
     return {board}
 })()
